@@ -4,6 +4,7 @@ import cors from 'cors';
 import "regenerator-runtime/runtime";
 import dotenv from 'dotenv';
 
+import driversHandler from './Drivers/Routes'
 dotenv.config();
 const app = express();
 app.use(cors());
@@ -12,10 +13,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-console.log(process.env.NODE_ENV)
+app.use('/apis/v1/drivers', driversHandler);
+//app.use('*', (req,res)=> res.status(404).json({msg: 'route not defined'}));
+
 
 app.listen(process.env.PORT, () => {
     if(process.env.NODE_ENV === 'development') {
         console.log(`server running on localhost: ${process.env.PORT}`);
     }
 });
+

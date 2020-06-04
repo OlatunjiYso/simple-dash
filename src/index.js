@@ -5,6 +5,8 @@ import "regenerator-runtime/runtime";
 import dotenv from 'dotenv';
 
 import driversHandler from './Drivers/Routes'
+import associationsHandler from './Associations/Routes';
+
 dotenv.config();
 const app = express();
 app.use(cors());
@@ -14,7 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.use('/apis/v1/drivers', driversHandler);
-//app.use('*', (req,res)=> res.status(404).json({msg: 'route not defined'}));
+app.use('/apis/v1/associations', associationsHandler);
+app.use('*', (req,res)=> res.status(404).json({msg: 'route not defined'}));
 
 
 app.listen(process.env.PORT, () => {

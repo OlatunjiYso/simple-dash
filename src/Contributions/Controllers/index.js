@@ -15,7 +15,9 @@ class Controllers {
             let { type, amount } = req.body;
             let { id } = req.user;
             amount = parseInt(amount);
-       
+            console.log('From Contributions Controller', 'req.user object', req.user)
+            console.log('From Contributions Controller', 'DestructuredId', id)
+            console.log('From Contributions Controller', 'req.user.id', id)
         try {
             let opening_balance;
             let closing_balance;

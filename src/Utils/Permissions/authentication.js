@@ -23,6 +23,7 @@ export const authenticate = (req, res, next) => {
                 });
         }
         req.user = decoded;
+        console.log('>>>>>> fROM Autjentication.js', 'req.user',req.user)
         return next();
     });
 }

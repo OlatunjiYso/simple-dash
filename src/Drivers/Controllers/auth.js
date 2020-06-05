@@ -54,7 +54,7 @@ class Authentication {
             const driverPassword = driverRecord[0].password;
             let passwordIsValid = bcrypt.compareSync(password, driverPassword);
             if(!passwordIsValid) return res.status(404).json({msg: 'incorrect username or password'});
-            const token = jwt.sign({id: driverRecord.driver_id}, jwtKey);
+            const token = jwt.sign({id: driverRecord[0].driver_id}, jwtKey);
             return res.status(200).json({msg: 'logged in', token})
         } 
         catch(err) {
